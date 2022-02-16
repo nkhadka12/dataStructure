@@ -1,48 +1,46 @@
-# Name: Nischal Khadka
-# Email: nischalkhadka.nk@gmail.com
-# purpose: To learn linked list, and its common use
 
 class Node:
-    def __init__(self,value,next):
-        self.value = value
+    def __init__(self ,next ,data):
         self.next = next
+        self.data = data
+    def getData(self):
+        return self.data
 
-
-class LinkedList:
-    def __init__(self):
+class LinkedStack:
+    def __init__(self ,size):
+        self.maxSize = size
         self.head = None
-    def insert_at_begining(self,value):
-        node = Node(value,self.head)
-        self.head = node
-
-    def insert_at_end(self,value):
+    # it will insert elements in the begining of the node
+    def insert_at_begining(self ,data):
         if self.head == None:
-            node = Node(value,self.head)
-            self.head = node
+            newNode = Node(self.head ,data)
+            self.head = newNode
         else:
             itr = self.head
             while itr.next != None:
                 itr = itr.next
+            newNode = Node(itr.next ,data)
+            itr.next = newNode
 
-            node = Node(value,itr.next)
-            itr.next = node
-    def print_node(self):
+
+
+    def print_linkedList(self):
         itr = self.head
-        while itr != None:
-            print(itr.value)
+        nodeCount = 0
+        while itr.next != None:
+            print("Node " ,nodeCount ,": " ,itr.data)
             itr = itr.next
 
-linkedList = LinkedList()
-linkedList.insert_at_begining("Nischal")
-linkedList.insert_at_begining("Sagun")
-linkedList.insert_at_begining("Nishant")
-linkedList.insert_at_begining("Keshav")
-linkedList.insert_at_begining("Sarita")
+my_linkedList = LinkedStack(10)
+
+sampleList = [100 ,6464 ,7374 ,237842 ,78378]
+
+for i in sampleList:
+    my_linkedList.insert_at_begining(i)
+
+my_linkedList.print_linkedList()
 
 
 
-linkedList.insert_at_end("Manamaya")
-linkedList.insert_at_end("Baa")
-linkedList.insert_at_end("Khadga")
 
-linkedList.print_node()
+
