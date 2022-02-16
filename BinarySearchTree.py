@@ -25,3 +25,4 @@ s.connect((host_ip, port))
 
 print("the socket has successfully connected to google")
 #This is me
+#Help me on this
